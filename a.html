@@ -120,8 +120,8 @@
                   
 for(var i in e.events) {
 	content += '<div class="event-tooltip-content">'
-					+ '<div class="event-name" style="color:' + e.events[i].color + '; white-space:nowrap;">' + e.events[i].name + '</div>'
-					+ '<div class="event-location" style="white-space:nowrap;">' + e.events[i].location + '</div>'
+					+ '<div class="event-name" style="color:' + e.events[i].color + ';">' + e.events[i].name + '</div>'
+					+ '<div class="event-location" >' + e.events[i].location + '</div>'
 				+ '</div>';
 }
               
@@ -129,8 +129,7 @@ for(var i in e.events) {
     trigger: 'manual',
     container: 'body',
     html: true,
-    content: content,
-    placement: 'auto'
+    content: content
 });
               
               $(e.element).popover('show');
@@ -223,5 +222,29 @@ for(var i in e.events) {
         });
       });
     </script>
+	  
+	  <script>
+	  var options = {
+    placement: function (context, source) {
+        var position = $(source).position();
+
+        if (position.left > 515) {
+            return "left";
+        }
+
+        if (position.left < 515) {
+            return "right";
+        }
+
+        if (position.top < 110){
+            return "bottom";
+        }
+
+        return "top";
+    }
+    , trigger: "click"
+};
+$(".event-tooltip-content").popover(options);
+	  </script>
   </body>
 </html>
