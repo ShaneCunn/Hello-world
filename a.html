@@ -102,7 +102,7 @@
               for(var i in e.events) {
                 content += '<div class="event-tooltip-content">'
                                 + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
-                                + '<div class="event-location">' + e.events[i].location + '</div>'
+                                + '<div class="event-location" style="white-space:nowrap;">' + e.events[i].location + '</div>'
                             + '</div>';
               }
               
@@ -110,7 +110,8 @@
                 trigger: 'manual',
                 container: 'body',
                 html:true,
-                content: content
+                content: content,
+                placement: 'auto'
               });
               
               $(e.element).popover('show');
