@@ -79,11 +79,7 @@
       $(function() {
         var currentYear = new Date().getFullYear();
 
-        $('#calendar').calendar({ 
-              customDayRenderer: function(element, date) {
-          //   $(element).parent().addClass('disabled');               
-          //where element it's each day and you still can see the events
-        },
+        $('#calendar').calendar({        
           enableContextMenu: true,
           enableRangeSelection: true,
           contextMenuItems:[
@@ -199,7 +195,11 @@
                 startDate: new Date(currentYear, 10, 17),
                 endDate: new Date(currentYear, 10, 17)
               }
-            ]
+            ],
+                 customDayRenderer: function(element, date) {
+             $(element).parent().addClass('disabled');             
+         
+        }
         });
         
         $('#save-event').click(function() {
