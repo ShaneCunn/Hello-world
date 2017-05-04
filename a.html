@@ -80,6 +80,10 @@
         var currentYear = new Date().getFullYear();
 
         $('#calendar').calendar({ 
+              customDayRenderer: function(element, date) {
+             $(element).addClass('disabled');
+          //where element it's each day and you still can see the events
+        },
           enableContextMenu: true,
           enableRangeSelection: true,
           contextMenuItems:[
