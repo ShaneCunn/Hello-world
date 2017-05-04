@@ -82,6 +82,7 @@
         $('#calendar').calendar({ 
               customDayRenderer: function(element, date) {
              $(element).addClass('disabled');
+                console.log(element);
           //where element it's each day and you still can see the events
         },
           enableContextMenu: true,
