@@ -196,18 +196,15 @@
                 endDate: new Date(currentYear, 10, 17)
               }
             ],
-                 customDayRenderer: function(element, date) {
-                   $(element).css('color', 'green'); 
-                    $(element).parent().addClass('disabled').css('color', 'blue');   
-                
-         
-        }
+       
         });
         
         $('#save-event').click(function() {
             saveEvent();
         });
       });
+      $(".day").addClass('disabled');
+      
     </script>
   </body>
 </html>
