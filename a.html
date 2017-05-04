@@ -203,8 +203,11 @@
             saveEvent();
         });
       });
-      setTimeout(function(){ $(".day").addClass('disabled'); }, 500);
       
+      $( document ).ready(function() {
+        setTimeout(function(){ $(".day").addClass('disabled'); }, 1000);
+    
+});
       
     </script>
   </body>
