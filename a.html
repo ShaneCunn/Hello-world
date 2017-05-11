@@ -53,8 +53,6 @@
     </div>
   </div>
 </div>
-<div id="context-menu">
-</div>
 <script type="text/javascript">
 function editEvent(event) {
     $('#event-modal input[name="event-index"]').val(event ? event.id : '');
@@ -80,11 +78,11 @@ function deleteEvent(event) {
 
 function saveEvent() {
     var event = {
-        id: $('#event-modal input[name="event-index"]').val(),
-        name: $('#event-modal input[name="event-name"]').val(),
-        location: $('#event-modal input[name="event-location"]').val(),
-        startDate: $('#event-modal input[name="event-start-date"]').datepicker('getDate'),
-        endDate: $('#event-modal input[name="event-end-date"]').datepicker('getDate')
+        id: $('#event-moda input[name="event-index"]').val(),
+        name: $('#event-moda input[name="event-name"]').val(),
+        location: $('#event-moda input[name="event-location"]').val(),
+        startDate: $('#event-moda input[name="event-start-date"]').datepicker('getDate'),
+        endDate: $('#event-moda input[name="event-end-date"]').datepicker('getDate')
     }
     
     var dataSource = $('#calendar').data('calendar').getDataSource();
@@ -115,7 +113,7 @@ function saveEvent() {
     }
     
     $('#calendar').data('calendar').setDataSource(dataSource);
-    $('#event-modal').modal('hide');
+    $('#event-moda').modal('hide');
 }
 
 $(function() {
