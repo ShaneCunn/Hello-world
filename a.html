@@ -62,7 +62,7 @@ function editEvent(event) {
     $('#event-modal input[name="event-reason"]').val(event ? event.reason : '');
     $('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
     $('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
-    $('#event-modal').modal();
+    $('#event-moda').modal();
 }
 
 function deleteEvent(event) {
@@ -75,13 +75,12 @@ function deleteEvent(event) {
         }
     }
     
-    $('#calendar').data('calendar').setDataSource(dataSource);
-    setTimeout(function(){$('td[style^="box-shadow"]').addClass('disabled').css('box-shadow','')},100);
+    $('#calendar').data('calendar').setDataSource(dataSource);  
 }
 
 function saveEvent() {
     var event = {
-        id: $('#event-modal input[name="event-index"]').val(),
+        id: $('#event-moda input[name="event-index"]').val(),
         
         reason: $('#event-modal input[name="event-reason"]').val(),
         startDate: $('#event-modal input[name="event-start-date"]').datepicker('getDate'),
