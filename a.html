@@ -142,7 +142,9 @@ $(function() {
             }
         },
         mouseOutDay: function(e) {          
-          $(e.element).popover('hide');           
+         if(e.events.length > 0) {
+                $(e.element).popover('hide');
+            }       
         },     
         dataSource: [
             {
