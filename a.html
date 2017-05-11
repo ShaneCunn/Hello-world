@@ -119,19 +119,8 @@ function saveEvent() {
 $(function() {
     var currentYear = new Date().getFullYear();
 
-    $('#calendar').calendar({
-        enableContextMenu: true,
-        enableRangeSelection: false,
-        contextMenuItems:[           
-            {
-                text: 'Delete',
-                click: deleteEvent
-            }
-        ],
-        selectRange: function(e) {
-            editEvent({ startDate: e.startDate, endDate: e.endDate });
-        },
-        mouseOnDay: function(e) {
+    $('#calendar').calendar({   
+        clickDay: function(e) {
             if(e.events.length > 0) {
                 var content = '';
                 
@@ -152,14 +141,9 @@ $(function() {
                 $(e.element).popover('show');
             }
         },
-        mouseOutDay: function(e) {
-            if(e.events.length > 0) {
-                $(e.element).popover('hide');
-            }
-        },
-        dayContextMenu: function(e) {
-            $(e.element).popover('hide');
-        },
+        mouseOutDay: function(e) {          
+          $(e.element).popover('hide');           
+        },     
         dataSource: [
             {
                 id: 0,
