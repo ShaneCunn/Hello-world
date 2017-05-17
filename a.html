@@ -121,8 +121,7 @@ $(function() {
 
     $('#calendar').calendar({   
         yearChanged: function(e) {
-    		alert('yearChanged');
-            e.preventRendering = true;
+    		alert('yearChanged');            
         },
         clickDay: function(e) {
             if(e.events.length > 0) {
