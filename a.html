@@ -120,9 +120,9 @@ $(function() {
     var currentYear = new Date().getFullYear();
 
     $('#calendar').calendar({   
-        yearChanged: function(e) {
+      /*  yearChanged: function(e) {
     		alert('yearChanged');            
-        },
+        },*/
         clickDay: function(e) {
             if(e.events.length > 0) {
                 var content = '';
