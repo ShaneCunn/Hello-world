@@ -245,7 +245,9 @@
 				
 				while(currentDate.getDay() != weekStart)
 				{
-					currentDate.setDate(currentDate.getDate() - 1);
+					//currentDate.setDate(currentDate.getDate() - 1);
+					currentDate.setDate(currentDate.getDate() + 1);
+					currentDate.setHours(0, 0, 0, 0);
 				}
 				
 				while(currentDate <= lastDate)
@@ -291,9 +293,7 @@
 						
 						row.append(cell);
 						
-						currentDate.setHours(0);
-						currentDate.setMinutes(0);
-						currentDate.setSeconds(0);
+						currentDate.setDate(currentDate.getDate() - 1);
 					}
 					while(currentDate.getDay() != weekStart)
 					
