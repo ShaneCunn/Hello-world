@@ -291,7 +291,9 @@
 						
 						row.append(cell);
 						
-						currentDate.setHours(0); currentDate.setMinutes(0); currentDate.setSeconds(0);
+						currentDate.setHours(0);
+						currentDate.setMinutes(0);
+						currentDate.setSeconds(0);
 					}
 					while(currentDate.getDay() != weekStart)
 					
