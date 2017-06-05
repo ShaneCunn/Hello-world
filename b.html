@@ -60,7 +60,7 @@ function editEvent(event) {
     $('#event-modal input[name="event-location"]').val(event ? event.location : '');
     $('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
     $('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
-    $('#event-moda').modal();
+    $('#event-modal').modal();
 }
 
 function deleteEvent(event) {
@@ -78,11 +78,11 @@ function deleteEvent(event) {
 
 function saveEvent() {
     var event = {
-        id: $('#event-moda input[name="event-index"]').val(),
-        name: $('#event-moda input[name="event-name"]').val(),
-        location: $('#event-moda input[name="event-location"]').val(),
-        startDate: $('#event-moda input[name="event-start-date"]').datepicker('getDate'),
-        endDate: $('#event-moda input[name="event-end-date"]').datepicker('getDate')
+        id: $('#event-modal input[name="event-index"]').val(),
+        name: $('#event-modal input[name="event-name"]').val(),
+        location: $('#event-modal input[name="event-location"]').val(),
+        startDate: $('#event-modal input[name="event-start-date"]').datepicker('getDate'),
+        endDate: $('#event-modal input[name="event-end-date"]').datepicker('getDate')
     }
     
     var dataSource = $('#calendar').data('calendar').getDataSource();
@@ -113,17 +113,29 @@ function saveEvent() {
     }
     
     $('#calendar').data('calendar').setDataSource(dataSource);
-    $('#event-moda').modal('hide');
+    $('#event-modal').modal('hide');
 }
 
 $(function() {
     var currentYear = new Date().getFullYear();
 
-    $('#calendar').calendar({   
-      /*  yearChanged: function(e) {
-    		alert('yearChanged');            
-        },*/
-        clickDay: function(e) {
+    $('#calendar').calendar({
+        enableContextMenu: true,
+        enableRangeSelection: true,
+        contextMenuItems:[
+            {
+                text: 'Update',
+                click: editEvent
+            },
+            {
+                text: 'Delete',
+                click: deleteEvent
+            }
+        ],
+        selectRange: function(e) {
+            editEvent({ startDate: e.startDate, endDate: e.endDate });
+        },
+        mouseOnDay: function(e) {
             if(e.events.length > 0) {
                 var content = '';
                 
@@ -144,11 +156,14 @@ $(function() {
                 $(e.element).popover('show');
             }
         },
-        mouseOutDay: function(e) {          
-         if(e.events.length > 0) {
+        mouseOutDay: function(e) {
+            if(e.events.length > 0) {
                 $(e.element).popover('hide');
-            }       
-        },     
+            }
+        },
+        dayContextMenu: function(e) {
+            $(e.element).popover('hide');
+        },
         dataSource: [
             {
                 id: 0,
